@@ -70,5 +70,8 @@
   "license": "Apache-2.0",
   "engines": {
     "yarn": ">= 1.0.0"
+  },
+  "dependencies": {
+    "karma-spec-reporter": "^0.0.32"
   }
 }

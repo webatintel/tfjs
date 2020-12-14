@@ -74,7 +74,7 @@ const devConfig = {
     '**/*.ts': ['karma-typescript'],  // *.tsx for React Jsx
   },
   karmaTypescriptConfig,
-  reporters: ['progress', 'karma-typescript']
+  reporters: ['progress', 'spec', 'karma-typescript']
 };
 
 const browserstackConfig = {
