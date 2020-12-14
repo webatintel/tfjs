@@ -27,10 +27,7 @@ then
   # without conflicting with others.
   yarn run-browserstack --browsers=bs_chrome_mac
 
-  yarn run-browserstack --browsers=bs_firefox_mac --flags '{"HAS_WEBGL": false}' --testEnv cpu
-  yarn run-browserstack --browsers=bs_safari_mac --flags '{"HAS_WEBGL": false}' --testEnv cpu
-  yarn run-browserstack --browsers=bs_ios_11 --flags '{"HAS_WEBGL": false}' --testEnv cpu
-  yarn run-browserstack --browsers=bs_android_9 --flags '{"HAS_WEBGL": false}' --testEnv cpu
+ yarn run-browserstack --browsers=bs_firefox_mac,bs_safari_mac,bs_ios_11,bs_android_9 --flags '{"HAS_WEBGL": false}' --testEnv cpu
 
 
   ### The next section tests TF.js in a webworker using the CPU backend.
@@ -39,8 +36,7 @@ then
   yarn rollup -c --ci
   # copy the cpu backend bundle somewhere the test can access it
   cp -v ../tfjs-backend-cpu/dist/tf-backend-cpu.min.js dist/
-  yarn test-webworker --browsers=bs_safari_mac
-  yarn test-webworker --browsers=bs_chrome_mac
+  yarn test-webworker --browsers=bs_safari_mac,bs_chrome_mac
 else
   yarn run-browserstack --browsers=bs_chrome_mac
 fi
