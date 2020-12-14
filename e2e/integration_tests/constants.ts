@@ -28,9 +28,9 @@ export const BACKENDS = ['cpu', 'webgl'];
 
 /** Testing models for CUJ: create -> save -> predict. */
 export const LAYERS_MODELS = [
-  'mlp', 'cnn', 'depthwise_cnn', //'simple_rnn', 
-  'gru', 'bidirectional_lstm',
-  'time_distributed_lstm', 'one_dimensional', 'functional_merge'
+  'mlp', 'cnn', 'depthwise_cnn',  //'simple_rnn',
+  'gru', 'bidirectional_lstm', 'time_distributed_lstm', 'one_dimensional',
+  'functional_merge'
 ];
 
 export const CONVERT_PREDICT_MODELS = {
@@ -40,7 +40,7 @@ export const CONVERT_PREDICT_MODELS = {
     'saved_model_v2_complex64', 'saved_model_v2_with_control_flow_v2',
     'saved_model_v2_with_tensorlist_ops', 'saved_model_v1_with_hashtable'
   ],
-  layers_model: ['mobilenet']
+  // layers_model: ['mobilenet']
 };
 
 /** Karma server directory serving local files. */
