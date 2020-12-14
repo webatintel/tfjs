@@ -73,7 +73,7 @@ steps:
     args:
       - test-snippets
     waitFor:
-      - yarn-tfjs-core
+      - build-tfjs-core
       - yarn-common
   - name: 'node:10'
     dir: tfjs-core
