@@ -17,7 +17,7 @@
 set -e
 
 if [ "$NIGHTLY" = true ]; then
-  yarn run-browserstack --browsers=bs_safari_mac, bs_ios_11 --testEnv webgl1
+  yarn run-browserstack --browsers=bs_safari_mac,bs_ios_11 --testEnv webgl1
   yarn run-browserstack --browsers=win_10_chrome,bs_android_9 --testEnv webgl2
   yarn run-browserstack --browsers=bs_firefox_mac
   yarn run-browserstack --browsers=bs_chrome_mac
