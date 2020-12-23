@@ -85,18 +85,19 @@ limitations under the License.
       <tbody></tbody>
     </table>
   </div>
-  <script src="https://unpkg.com/@tensorflow/tfjs-core@latest/dist/tf-core.js"></script>
-  <script src="https://unpkg.com/@tensorflow/tfjs-backend-cpu@latest/dist/tf-backend-cpu.js"></script>
-  <script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@latest/dist/tf-backend-webgl.js"></script>
-  <script src="https://unpkg.com/@tensorflow/tfjs-layers@latest/dist/tf-layers.js"></script>
-  <script src="https://unpkg.com/@tensorflow/tfjs-converter@latest/dist/tf-converter.js"></script>
-  <script src="https://unpkg.com/@tensorflow/tfjs-backend-wasm@latest/dist/tf-backend-wasm.js"></script>
+  <script src="../../../tfjs-core/dist/tf-core.js"></script>
+  <script src="https://unpkg.com/@tensorflow/tfjs-backend-cpu@2.7.0/dist/tf-backend-cpu.js"></script>
+  <script src="https://unpkg.com/@tensorflow/tfjs-backend-webgl@2.7.0/dist/tf-backend-webgl.js"></script>
+  <script src="https://unpkg.com/@tensorflow/tfjs-layers@2.7.0/dist/tf-layers.js"></script>
+  <script src="https://unpkg.com/@tensorflow/tfjs-converter@2.7.0/dist/tf-converter.js"></script>
+  <script src="https://unpkg.com/@tensorflow/tfjs-backend-wasm@2.7.0/dist/tf-backend-wasm.js"></script>
   <script src="https://unpkg.com/@tensorflow/tfjs-automl@latest/dist/tf-automl.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands"> </script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2"></script>
 
+  <script src="../../../tfjs-backend-webgpu/dist/tf-webgpu.js"></script>
   <script src="../model_config.js"></script>
   <script src="../benchmark_util.js"></script>
   <script src="./util.js"></script>
@@ -268,7 +269,7 @@ limitations under the License.
           tf.dispose(input);
         }
       } else {
-        timeInfo = await timeInference(() => predict(model), 1);
+        timeInfo = await timeInference(() => predict(model), 50);
       }
 
       await showMsg(null);
@@ -460,9 +461,9 @@ limitations under the License.
 
       await warmUpAndRecordTime();
       await showMsg('Waiting for GC');
-      await sleep(1000);
+      //await sleep(1000);
       await profileMemoryAndKernelTime();
-      await sleep(200);
+      //await sleep(200);
       await measureAveragePredictTime();
     }
 
@@ -500,7 +501,7 @@ limitations under the License.
       parameterFolder.open();
 
       const envFolder = gui.addFolder('Environment');
-      envFolder.add(state, 'backend', ['wasm', 'webgl', 'cpu']).onChange(async backend => {
+      envFolder.add(state, 'backend', ['wasm', 'webgl', 'cpu', 'webgpu']).onChange(async backend => {
         // TODO: Failed to set backend
         await tf.setBackend(backend);
         await showFlagSettings(envFolder, state.backend);
