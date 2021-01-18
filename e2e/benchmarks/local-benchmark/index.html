@@ -178,6 +178,7 @@ limitations under the License.
       },
       backend: 'wasm',
       kernelTiming: 'aggregate',
+      inputSize: 256,
       modelType: '',
       modelUrl: '',
       isModelChanged: false,
@@ -335,7 +336,8 @@ limitations under the License.
 
       await showMsg('Loading the model');
       let start = performance.now();
-      model = await benchmark.load();
+      //model = await benchmark.load();
+      model = await benchmark.load(parseInt(state.inputSize));
       predict = benchmark.predictFunc();
       const elapsed = performance.now() - start;
 
@@ -524,6 +526,7 @@ limitations under the License.
       const parameterFolder = gui.addFolder('Parameters');
       parameterFolder.add(state, 'numRuns');
       parameterFolder.add(state, 'kernelTiming', ['aggregate', 'individual']);
+      parameterFolder.add(state, 'inputSize', [256, 512, 1024]);
       parameterFolder.open();
 
       const envFolder = gui.addFolder('Environment');

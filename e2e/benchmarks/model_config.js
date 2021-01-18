@@ -76,11 +76,12 @@ const sentences = [
 
 const benchmarks = {
   'posenet_resNet_q4_s32_input224_tensor': {
-    load: async () => {
+    load: async (inputResolution) => {
       const resNetConfig ={
         architecture: 'ResNet50',
         outputStride: 32,
-        inputResolution: 224,
+        //inputResolution: 224,
+        inputResolution: inputResolution,
         quantBytes: 4,
         modelUrl: 'savedmodel/posenet/resnet50/float/model-stride32.json'
       };
@@ -100,6 +101,7 @@ const benchmarks = {
         architecture: 'ResNet50',
         outputStride: 32,
         inputResolution: 224,
+        inputResolution: inputResolution,
         quantBytes: 4,
         modelUrl: 'savedmodel/posenet/resnet50/float/model-stride32.json'
       };
@@ -120,6 +122,7 @@ const benchmarks = {
         architecture: 'MobileNetV1',
         outputStride: 16,
         inputResolution: 513,
+        inputResolution: inputResolution,
         multiplier: 0.75,
         quantBytes: 2,
         modelUrl: 'savedmodel/posenet/mobilenet/quant2/075/model-stride16.json'
@@ -140,6 +143,7 @@ const benchmarks = {
         architecture: 'MobileNetV1',
         outputStride: 16,
         inputResolution: 513,
+        inputResolution: inputResolution,
         multiplier: 0.75,
         quantBytes: 2,
         modelUrl: 'savedmodel/posenet/mobilenet/quant2/075/model-stride16.json'
