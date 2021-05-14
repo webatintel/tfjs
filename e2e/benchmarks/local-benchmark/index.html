@@ -183,6 +183,7 @@ limitations under the License.
 
         // load model and run inference
         try {
+          await tf.ready();
           await loadModelAndRecordTime();
           await showMsg('Testing correctness');
           await showInputs();
